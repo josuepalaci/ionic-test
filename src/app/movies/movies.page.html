@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaulHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>movies</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goHome()">
+        <ion-icon name="globe"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let movie of movies" [routerLink]="['/movies',movie.id]">
+      <ion-avatar slot="start">
+        <ion-img [src]="movie.img"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        {{movie.title}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="addNewMovie()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>

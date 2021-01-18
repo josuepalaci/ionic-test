@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>formularios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goHome()">
+        <ion-icon name="videocam-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-button color="primary" [routerLink]="['importar']">Importar</ion-button>
+          <ion-button color="secondary" [routerLink]="['agregar']">Agregar</ion-button>
+          <ion-button color="tertiary" [routerLink]="['exportar']">Exportar</ion-button>
+      </ion-col>
+        
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p>Agregar campos que tendra cada persona.</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form #form="ngForm" (ngSubmit)="logForm(form)" novalidate>
+          <ion-item>
+            <ion-label>Nombre:</ion-label>
+            <ion-input type="text" required name="campo" [(ngModel)]="campo" ngControl="campo"></ion-input>
+            <ion-button type="submit" block>Agregar</ion-button>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="campos; else noCampos">
+          <ion-item *ngFor="let campo of campos | keyvalue">
+            {{campo.key}} {{campo.value}}
+            <ion-button type="button" color="warning" (click)="eliminar(campo.key)" block>Eliminar</ion-button>
+          </ion-item>
+        </ion-list>
+        <ng-template #noCampos>
+                <ion-text>
+                  <p class="ion-text-center">No hay campos de personas</p>
+                </ion-text>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

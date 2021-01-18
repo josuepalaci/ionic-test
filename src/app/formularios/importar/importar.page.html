@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaulHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Importar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <input type="file" (change)="onFileChange($event)" />
+
+    <div id="output"></div>
+    <br>
+  <div *ngIf="willDownload">
+    <a id="download"> Descargar archivo JSON </a>
+  </div>
+
+</ion-content>
